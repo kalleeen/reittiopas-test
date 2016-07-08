@@ -1,0 +1,46 @@
+http://dev.hsl.fi/graphql/console/
+
+{
+  plan(
+    fromPlace: "Siilitie 7",
+    from: {lat: 60.170915, lon: 24.941264000000047},
+    toPlace: "Tukholmankatu 10",
+    to: {lat: 60.1912105, lon: 24.901690499999972},
+    modes: "BUS,TRAM,RAIL,SUBWAY,FERRY,WALK",
+    walkReluctance: 2.1,
+    walkBoardCost: 600,
+    minTransferTime: 180,
+    walkSpeed: 1.2,
+  ) {
+    itineraries{
+      walkDistance,
+      duration,
+      legs {
+        mode
+        route {
+          id
+        }
+        startTime
+        endTime
+        from {
+          lat
+          lon
+          name
+          stop {
+            code
+            name
+          }
+        },
+        to {
+          lat
+          lon
+          name
+        },
+        agency {
+          id
+        },
+        distance
+      }
+    }
+  }
+}
